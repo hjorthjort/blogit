@@ -1,0 +1,20 @@
+#!/bin/bash
+
+#Global varibles
+server='hjort@162.248.8.165'
+rootpath='~/my-site'
+
+function publish {
+	#Set the name of the new html file
+	page="$1.html"
+
+	#Generate markdown and push to server
+	pandoc "$1" | ssh $server "cat > $rootpath/blog-posts/'$page'"
+
+	#Put the name of the new file in the index over all posts.
+	ssh $server "touch $rootpath/blog-posts/.post-index.txt && sed -i '1i $page' $rootpath/blog-posts/.post-index.txt"
+}
+
+if [ $1 = "publish" ]; then 
+	publish "$2"
+fi
