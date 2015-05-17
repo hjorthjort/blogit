@@ -1,11 +1,16 @@
 #!/bin/bash
 
 #Global varibles
-server='hjort@162.248.8.165'
 rootpath='~/my-site'
+configpath='/usr/local/etc/blogit.cnf'
+
+function init {
+	printf "server=%s\nrootpath=%s" "" "" > $configpath 
+}
+
 
 function set-server {
-	#TODO: Look ut how to set global variable
+	#cat $configpath | sed 's/\(server=\).*/\1 "$1"/' >"$configpath"
 	printf "Server set to $1"
 }
 
@@ -26,4 +31,8 @@ fi
 
 if [ $1 = "set-server" ]; then
 	set-server "$2"
+fi
+
+if [ $1 = "init" ]; then
+	init
 fi
