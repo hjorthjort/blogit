@@ -1,27 +1,32 @@
-blogit – the tiny bash blogger
-------
+blogit – the almost too uncomplicated bash blogger
+===============================================
+
+**NOTE: blogit is handcrafted for my needs, powering my website, and most likely won't serve you, unless you configure it for your own needs. It doesn't treat the server as a black box – blogit actually needs to know a few things about your servers inner workings. That said, feel free to check it out. Below are instructions if you still want to use it for your own needs.**
 
 Blogit powers [hjorthjort.com](http://www.hjorthjort.com)
 
-Blogit pushes markdown to a specified server and publishes them in a ertain way.
+Blogit pushes markdown to a specified server and "publishes" them.
 
-#What you need:
+What you need:
+-------------
 
-* Bash
+* A shell that runs bash scripts.
 * A server for hosting.
 * Login credentials for that server or access via ssh key.
 * A blogpost written in markdown or html.
 
-#What it does:
+What it does:
+-------------
 
-All you have to do is this: 
+What you have to do is this: 
 
 1. Open blogit in your texteditor and set your username and IP to the preferred values in the top of the document. Also change the variable rootpath to reflect the place on your server where you want your posts to go. You only have to do this once.
 1. Create a folder called blog-posts on your server where you want your posts to go, under the folder you set as rootpath.
 1. cd into folder with your post (optional, but gives you more managable, legible and less revealing filenames in the end).
 1. On the command line, write "blogit publish <name of your post file>". For example: "blogit publish README.md".
 
-#Blogit then does the following:
+Blogit then does the following:
+-----------------------------
 
 1. Converts your post to html using pandoc.
 1. Enters your server via ssh. If you don't have an ssh key, you will have to enter your password here.
