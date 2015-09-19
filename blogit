@@ -17,7 +17,7 @@ function put {
 	pandoc "$1" | ssh $server "cat > $rootpath/blog-posts/'$page'"
 }
 
-function delete {
+function unpublish {
     #Delete last post from index, but keep file
     ssh $server "ex -c ':1d' -c ':wq' $rootpath/blog-posts/.post-index.txt"
 }
@@ -30,6 +30,6 @@ if [ $1 = "put" ]; then
     put $2
 fi
 
-if [ $1 = "delete" ]; then
-    delete
+if [ $1 = "unpublish" ]; then
+    unpublish
 fi
