@@ -5,7 +5,7 @@ blogit – the almost too uncomplicated bash blogger
 
 Blogit powers [hjorthjort.com](http://www.hjorthjort.com)
 
-Blogit pushes markdown to a specified server and "publishes" them.
+Blogit pushes markdown documents to a specified server and "publishes" them.
 
 What you need:
 -------------
