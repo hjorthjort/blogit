@@ -17,6 +17,12 @@ function put {
 	pandoc "$1" | ssh $server "cat > $rootpath/blog-posts/'$page'"
 }
 
+function putfiles {
+    
+    #Publish images to server
+    scp "$@" $server:$rootpath/blog-posts/
+}
+
 function unpublish {
     #Delete last post from index, but keep file
     ssh $server "ex -c ':1d' -c ':wq' $rootpath/blog-posts/.post-index.txt"
@@ -32,4 +38,8 @@ fi
 
 if [ $1 = "unpublish" ]; then
     unpublish
+fi
+
+if [ $1 = "putfiles" ]; then
+    putfiles "${@:2}"
 fi
